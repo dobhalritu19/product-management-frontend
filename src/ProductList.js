@@ -28,7 +28,7 @@ const ProductList = () => {
 
             {/* QR Code */}
             <QRCodeCanvas
-              value={`${PORT}/product/${product._id}`}
+              value={`${PORT}/product/${product.id}`}
               size={100}
             />
 
