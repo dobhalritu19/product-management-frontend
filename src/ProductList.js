@@ -3,12 +3,13 @@ import axios from "axios";
 import { QRCodeCanvas } from "qrcode.react";
 
 const ProductList = () => {
-  const PORT = process.env.REACT_APP_API_BASE_URL
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL
+  const FRONTEND_BASE_URL = process.env.REACT_APP_FRONTEND_BASE_URL
 
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    axios.get(`${PORT}/api/products`)
+    axios.get(`${API_BASE_URL}/api/products`)
       .then((response) => {
         setProducts(response.data);
       })
@@ -27,7 +28,7 @@ const ProductList = () => {
 
             {/* QR Code */}
             <QRCodeCanvas
-              value={`${PORT}/product/${product.id}`}
+              value={`${FRONTEND_BASE_URL}/product/${product.id}`}
               size={100}
             />
 

@@ -3,7 +3,8 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 
 const ProductDetails = () => {
-    const PORT = process.env.REACT_APP_API_BASE_URL
+    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL
+
     const { productId } = useParams();  // Extract productId from the URL
     const [product, setProduct] = useState(null);
 
@@ -11,7 +12,7 @@ const ProductDetails = () => {
     useEffect(() => {
         const fetchProductDetails = async () => {
             try {
-                const response = await axios.get(`${PORT}/api/products/${productId}`);
+                const response = await axios.get(`${API_BASE_URL}/api/product/${productId}`);
                 setProduct(response.data);
             } catch (error) {
                 console.error("Error fetching product:", error);
