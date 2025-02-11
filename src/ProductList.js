@@ -4,10 +4,13 @@ import { QRCodeCanvas } from "qrcode.react";
 // import { Link } from "react-router-dom";
 
 const ProductList = () => {
+  const PORT = process.env.REACT_APP_API_BASE_URL
+  console.log("PORT", PORT)
+
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/products")
+    axios.get(`${PORT}/api/products`)
       .then((response) => {
         setProducts(response.data);
       })
@@ -24,11 +27,11 @@ const ProductList = () => {
             <p>{product.description}</p>
 
             {/* QR Code */}
-            <QRCodeCanvas 
-              value={`http://localhost:3000/product/${product._id}`} 
-              size={100} 
+            <QRCodeCanvas
+              value={`${PORT}/product/${product._id}`}
+              size={100}
             />
-            
+
             {/* Link to Product Details Page */}
             {/* <p>
               <Link to={`/product/${product._id}`}>View Details</Link>
