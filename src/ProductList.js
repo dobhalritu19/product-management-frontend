@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { QRCodeCanvas } from "qrcode.react";
-// import { Link } from "react-router-dom";
 
 const ProductList = () => {
   const PORT = process.env.REACT_APP_API_BASE_URL
-  console.log("PORT", PORT)
 
   const [products, setProducts] = useState([]);
 
@@ -21,8 +19,9 @@ const ProductList = () => {
     <div>
       <h2>Product List</h2>
       <ul>
-        {products.map((product) => (
-          <li key={product._id} style={{ marginBottom: "20px" }}>
+        {products.map((product, index) => (
+          <li key={index} style={{ marginBottom: "20px" }}>
+            <p>{product.id}</p>
             <strong>{product.name}</strong> - ${product.price}
             <p>{product.description}</p>
 
